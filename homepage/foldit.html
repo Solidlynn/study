@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>접어두기 기능</title>
+    <style>
+        .fold {
+            background-color: #f1f1f1;
+            color: #444;
+            cursor: pointer;
+            padding: 30px;
+            width: 100%;
+            border-style: double;
+            border-radius: 20px;
+            text-align: right;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active, .fold:hover {
+            background-color: #ddd;
+        }
+
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+        }
+
+        .content.show {
+            padding: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>접어두기 기능</h2>
+
+<button class="fold">접어두기 클릭 ▼</button>
+<div class="content">
+    <p>여기에 접어둔 내용이 들어갑니다.</p>
+    <span>스팬태그는 아래로 안가고 쓴만큼만 차지하는 친구</span>
+    <p>귀여운 고앵이</p>
+    <img src="./cat.png" alt="고앵이">
+</div>
+
+<script>
+    var fol = document.getElementsByClassName("fold");
+    var i;
+
+    for (i = 0; i < fol.length; i++) {
+        fol[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                content.classList.remove("show");
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.classList.add("show");
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

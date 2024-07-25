@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이름 순차적 표시</title>
+    <style>
+        #nameDisplay {
+            color: black; /* 텍스트 색상을 검정으로 설정 */
+            font-size: 36px; /* 텍스트 크기 설정 */
+        }
+        h4 {
+            line-height: 1.5;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h4>
+        <span id="nameDisplay"></span>
+    </h4>
+    <script>
+        const names = ["민 지", "다 은", "지 원", "민 수" ,"채 린","동 희", "민 준","하 영", "민 철","시 은"];
+        let index = 0;
+
+        function displayNextName() {
+            const nameDisplay = document.getElementById("nameDisplay");
+            nameDisplay.textContent = `[   ${names[index]}   ] 의 꿈은 이루어진다!`;
+
+            index = (index + 1) % names.length;
+
+            setTimeout(displayNextName, 2000);
+        }
+
+        displayNextName();
+    </script>
+</body>
+</html>
